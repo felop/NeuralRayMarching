@@ -1,3 +1,7 @@
+# Ray marches throught the scene with:
+# INPUT  --->  distance function of an object
+# OUTPUT --->  distance map of the scene
+
 from math import sqrt, atan, pi
 import numpy as np
 from rayNN import GetDistAngle
@@ -8,9 +12,9 @@ SURFACE_DIST = 0.01
 
 distanceMapNN = np.zeros((45,80))
 
-##########
-# annexe #
-##########
+###################
+# maths functions #
+###################
 
 def length(o,p):
     return sqrt((o[0]-p[0])**2+(o[1]-p[1])**2+(o[2]-p[2])**2)
@@ -28,14 +32,13 @@ def addition(list0,list2):
     return termes
 
 def normalize(v):
-    #lenght = math.sqrt(x**2+y**2+z**2)
     v = np.array(v)
     v = v / np.sqrt(np.sum(v**2))
     return list(v)
 
-##########
-# annexe #
-##########
+###################
+# maths functions #
+###################
 
 def GetDist(point):
     sphere      = [0.,3.,5.,0.5]
@@ -49,8 +52,7 @@ def RayMarch(ro, rd):
     dO = 0
     for i in range(MAX_STEP):
         p   = addition(ro, [rd[0]*dO,rd[1]*dO,rd[2]*dO] )
-        dS  = GetDistAngle(p) #GetDist(p)
-        #pour une autre fois : distanceMapNN[x][y] = [abs(dS-GetDist(p))*100,0,0]
+        dS  = GetDistAngle(p)
         dO += dS
         if dO>=MAX_DIST or dS<=SURFACE_DIST:
             break
@@ -63,4 +65,4 @@ def ImageGen(x,y,resolution):
     rd = normalize((uv[0],uv[1],1))
     dist = RayMarch(ro,rd)/10
     col = [dist,dist,dist]
-    return col #[uv[0],uv[1],uv[0]]
+    return col
