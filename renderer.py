@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import raymarcherLIB as lib
+import rendererLIB as lib
 from tqdm import tqdm
 from glob import glob
 images = glob("results/*.png")
