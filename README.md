@@ -1,1 +1,1 @@
-"# NeuralRayMarching" 
+# NeuralRayMarching
