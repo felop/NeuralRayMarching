@@ -4,7 +4,7 @@
 
 from math import sqrt, atan, pi
 import numpy as np
-from rayNN import GetDistAngle
+from rayNN import GetDistFromAngle
 
 MAX_STEP = 100
 MAX_DIST = 100
