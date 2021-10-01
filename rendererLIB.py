@@ -52,7 +52,7 @@ def RayMarch(ro, rd):
     dO = 0
     for i in range(MAX_STEP):
         p   = addition(ro, [rd[0]*dO,rd[1]*dO,rd[2]*dO] )
-        dS  = GetDistAngle(p)
+        dS  = GetDistFromAngle(p)
         dO += dS
         if dO>=MAX_DIST or dS<=SURFACE_DIST:
             break
